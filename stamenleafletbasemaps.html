@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stamen simple basemap</title>
+        <script type="text/javascript" src="http://leaflet.cloudmade.com/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="http://leaflet.cloudmade.com/dist/leaflet.css" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="http://leaflet.cloudmade.com/dist/leaflet.ie.css" /><![endif]-->
+        
+        <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
+
+        <style type="text/css">
+            .map {
+                width: 700px;
+                height: 750px;
+                margin: 0 0 1em 0;
+            }
+            </style>
+    </head>
+    <body onload="initialize()">
+        <div id="terrain" class="map"></div>
+        <div id="watercolor" class="map"></div>
+        <div id="toner" class="map"></div>
+        
+        <script type="text/javascript">
+            function initialize() {
+                var layers = ["terrain", "watercolor","toner"];
+               
+                i=0
+                for(i=0; i<=layers.length; i++){
+                var layer = layers[i]
+                
+                var map = new L.Map(layer, {
+                                    center: new L.LatLng(37.75, -122.45),
+                                    zoom: 12
+                                    });
+                map.addLayer(new L.StamenTileLayer(layer));
+              }
+            }
+            </script>
+    </body>
+</html>
